@@ -1,0 +1,9 @@
+{
+    "nombre": "MCJdOS Alpha - Mesa Estudiantil",
+    "gpu": "mesa",
+    "tipo": "estudiantil",
+    "paquetes_base": ["libreoffice-fresh", "openssh", "firefox", "vlc"],
+    "paquetes_gpu": ["mesa", "vulkan-radeon", "vulkan-intel"],
+    "paquetes_gaming": [],
+    "mangohud_default": false
+}
