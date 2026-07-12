@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+import shutil
+
+
+def detectar_sistema():
+    """Detecta qué gestor de paquetes AUR está disponible (yay, paru) o cae a pacman."""
+    if shutil.which("yay"):
+        return "yay"
+    elif shutil.which("paru"):
+        return "paru"
+    else:
+        return "pacman"
+
+
+def ejecutar(comando):
+    """Ejecuta un comando del sistema mostrando su salida en tiempo real."""
+    try:
+        subprocess.run(comando)
+    except FileNotFoundError:
+        print(f"[ijascd] Error: no se encontró el comando '{comando[0]}'.")
+        sys.exit(1)
+    except KeyboardInterrupt:
+        print("\n[ijascd] Operación cancelada por el usuario.")
+        sys.exit(1)
+
+
+def os_info():
+    """Muestra el logo y la ayuda por defecto de MCJdOS Alpha."""
+    print(r"""
+  __  __  ____       _       _    ___  ____
+ |  \/  |/ ___|     | |  __ | |  / _ \/ ___|
+ | |\/| | |         | | / _`  | | | | \___ \
+ | |  | | |___   ___| || (_|  | | |_| |___) |
+ |_|  |_|\____| \____ | \__,__| (_)___/|____/
+
+        MCJdOS Alpha — Gestor de paquetes
+""")
+    print("Uso: /OS<subcomando> [argumento]\n")
+    print("Subcomandos disponibles:")
+    print("  info | help      Muestra este mensaje")
+    print("  search <query>   Busca un paquete")
+    print("  install <pkg>    Instala un paquete (requiere sudo)")
+    print("  remove <pkg>     Elimina un paquete (requiere sudo)")
+    print("  update           Sincroniza y actualiza el sistema (requiere sudo)")
+
+
+def main():
+    # Si el usuario no pasa suficientes argumentos (ej: solo puso /OS)
+    if len(sys.argv) < 2:
+        os_info()  # Muestra tu logo y ayuda por defecto
+        return
+
+    # Limpiamos el argumento quitándole espacios y pasándolo a minúsculas
+    accion = sys.argv[1].strip().lower()
+
+    sys_manager = detectar_sistema()
+
+    if accion == "info" or accion == "help":
+        os_info()
+
+    elif accion == "search":
+        if len(sys.argv) < 3:
+            print("Especifica qué buscar. Uso: /OSsearch <query>")
+            sys.exit(1)
+        query = sys.argv[2]
+        if sys_manager in ["yay", "paru"]:
+            ejecutar([sys_manager, "-Ss", query])
+        else:
+            ejecutar(["pacman", "-Ss", query])
+
+    elif accion == "install":
+        if len(sys.argv) < 3:
+            print("Especifica el paquete. Uso: /OSinstall <paquete>")
+            sys.exit(1)
+        pkg = sys.argv[2]
+        if sys_manager in ["yay", "paru"]:
+            ejecutar([sys_manager, "-S", pkg])
+        else:
+            ejecutar(["sudo", "pacman", "-S", pkg])
+
+    elif accion == "remove":
+        if len(sys.argv) < 3:
+            print("Especifica el paquete. Uso: /OSremove <paquete>")
+            sys.exit(1)
+        pkg = sys.argv[2]
+        if sys_manager in ["yay", "paru"]:
+            ejecutar([sys_manager, "-Rns", pkg])
+        else:
+            ejecutar(["sudo", "pacman", "-Rns", pkg])
+
+    elif accion == "update":
+        print("[MCJdOS] Sincronizando y actualizando todo el sistema operativo.")
+        if sys_manager in ["yay", "paru"]:
+            ejecutar([sys_manager, "-Syu"])
+        else:
+            ejecutar(["sudo", "pacman", "-Syu"])
+
+    else:
+        print(f"[ijascd] Subcomando interno '{accion}' no reconocido por el sistema.")
+
+
+if __name__ == "__main__":
+    main()
