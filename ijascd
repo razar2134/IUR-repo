@@ -27,15 +27,19 @@ def ejecutar(comando):
 
 
 def os_info():
-    """Muestra el logo y la ayuda por defecto de MCJdOS Alpha."""
-    print(r"""
-  __  __  ____       _       _    ___  ____
- |  \/  |/ ___|     | |  __ | |  / _ \/ ___|
- | |\/| | |         | | / _`  | | | | \___ \
- | |  | | |___   ___| || (_|  | | |_| |___) |
- |_|  |_|\____| \____ | \__,__| (_)___/|____/
+    ROJO = "\033[1;31m"
+    VERDE = "\033[1;32m"
+    CYAN = "\033[1;36m"
+    RESET = "\033[0m"
 
-        MCJdOS Alpha — Gestor de paquetes
+    print(f"""
+{ROJO} ███╗   ███╗{VERDE} ██████╗ {CYAN}  ██╗{ROJO}██████╗ {VERDE} ██████╗ {CYAN}███████╗{RESET}
+{ROJO} ████╗ ████║{VERDE}██╔════╝{CYAN}   ██║{ROJO}██╔══██╗{VERDE}██╔═══██╗{CYAN}██╔════╝{RESET}
+{ROJO} ██╔████╔██║{VERDE}██║     {CYAN}   ██║{ROJO}██║  ██║{VERDE}██║   ██║{CYAN}███████╗{RESET}
+{ROJO} ██║╚██╔╝██║{VERDE}██║   ██{CYAN}   ██║{ROJO}██║  ██║{VERDE}██║   ██║{CYAN}╚════██║{RESET}
+{ROJO} ██║ ╚═╝ ██║{VERDE}╚██████╗{CYAN}██ ██║{ROJO}██████╔╝{VERDE}╚██████╔╝{CYAN}███████║{RESET}
+{ROJO} ╚═╝     ╚═╝{VERDE} ╚═════╝{CYAN}╚═╝╚═╝{ROJO}╚═════╝ {VERDE} ╚═════╝ {CYAN}╚══════╝{RESET}
+           {CYAN}MCJdOS Alpha{RESET} — {VERDE}Gestor de paquetes{RESET}
 """)
     print("Uso: /OS<subcomando> [argumento]\n")
     print("Subcomandos disponibles:")
