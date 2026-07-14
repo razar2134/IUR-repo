@@ -4,6 +4,6 @@
     "tipo": "gaming",
     "paquetes_base": ["libreoffice-fresh", "openssh", "firefox", "vlc"],
     "paquetes_gpu": ["nvidia-dkms", "nvidia-utils", "lib32-nvidia-utils"],
-    "paquetes_gaming": ["mangohud", "lib32-mangohud", "gamemode", "wine-ge-custom", "lutris"],
+    "paquetes_gaming": ["mangohud", "lib32-mangohud", "gamemode", "wine-ge-custom", "lutris", "jdk-openjdk", "prismlauncher"],
     "mangohud_default": true
 }
