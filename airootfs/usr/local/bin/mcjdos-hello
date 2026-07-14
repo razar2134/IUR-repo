@@ -1,0 +1,41 @@
+import tkinter as tk
+from tkinter import messagebox
+import webbrowser
+
+root = tk.Tk()
+root.title("MCJdOS Hello - Alpha 1.0.0")
+root.geometry("500x350")
+root.configure(bg="#0c0f12")
+
+titulo = tk.Label(root, text="¡BIENVENIDO A MCJdOS!", font=("Arial", 16, "bold"), fg="#00bfff", bg="#0c0f12")
+titulo.pack(pady=20)
+
+subtitulo = tk.Label(root, text="Is Just a Stupid Coding OS (Edición AMD Puro)", font=("Arial", 10, "italic"), fg="#2ecc71", bg="#0c0f12")
+subtitulo.pack(pady=5)
+
+info = tk.Label(root, text="Tu sistema operativo gamer está listo.\n\nRecuerda usar los comandos con esttica Minecraft:\n/OSinstall <paquete>\n/OSmango <juego>",
+                font=("Arial", 11), fg="#e3e3e3", bg="#0c0f12", justify="center")
+info.pack(pady=30)
+
+def abrir_patreon():
+    webbrowser.open("https://www.patreon.com/cw/rartarrazar_MCjdOS")
+
+def abrir_discord():
+    webbrowser.open("https://discord.gg/GBcEmvJmF9")
+
+frame_botones = tk.Frame(root, bg="#0c0f12")
+frame_botones.pack(pady=10)
+
+btn_patreon = tk.Button(frame_botones, text="🎨 Apóyame en Patreon con solo 5 dolares para comer XD", font=("Arial", 10, "bold"),
+                         fg="#ffffff", bg="#FF424D", command=abrir_patreon)
+btn_patreon.pack(side="left", padx=10)
+
+btn_discord = tk.Button(frame_botones, text="💬 Únete al Discord", font=("Arial", 10, "bold"),
+                         fg="#ffffff", bg="#5865F2", command=abrir_discord)
+btn_discord.pack(side="left", padx=10)
+
+btn_cerrar = tk.Button(root, text="¡A cocinarla!!", font=("Arial", 11, "bold"),
+                        fg="#ffffff", bg="#e74c3c", command=root.destroy)
+btn_cerrar.pack(pady=20)
+
+root.mainloop()
