@@ -1,6 +1,25 @@
-#!/usr/bin/env bash
+k#!/usr/bin/env bash
 python3 /usr/local/bin/ijascd info
 echo ""
-echo "Iniciando el instalador de MCJdOS Alpha..."
+echo "¿Qué versión de MCJdOS querés instalar?"
+echo "  1) Estudiantil (LibreOffice, SSH, herramientas de trabajo)"
+echo "  2) Gaming (MangoHud, Java, Prism Launcher, drivers de juegos)"
+read -p "Elegí 1 o 2: " opcion
+
+case "$opcion" in
+    1)
+        cp /etc/mcjdos/profile-estudiantil.json /etc/mcjdos/profile.json
+        echo "Perfil Estudiantil activado."
+        ;;
+    2)
+        cp /etc/mcjdos/profile-gaming.json /etc/mcjdos/profile.json
+        echo "Perfil Gaming activado."
+        ;;
+    *)
+        echo "Opción inválida, usando Estudiantil por defecto."
+        cp /etc/mcjdos/profile-estudiantil.json /etc/mcjdos/profile.json
+        ;;
+esac
+
 sleep 2
 archinstall
