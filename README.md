@@ -1,3 +1,3 @@
 # IUR-repo
 este es mi codigo ijascd, el que lo quiera modificar aqui esta....
-este archivo .py fue solo un invento mio que se me ocurri por aburrides XDD
+fue solo un invento mio que se me ocurrio por aburrides XDDDDDDDDDDDDDD 
