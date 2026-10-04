@@ -38,7 +38,7 @@ def os_info():
 {ROJO} ██╔████╔██║{VERDE}██║     {CYAN}   ██║{ROJO}██║  ██║{VERDE}██║   ██║{CYAN}███████╗{RESET}
 {ROJO} ██║╚██╔╝██║{VERDE}██║   ██{CYAN}   ██║{ROJO}██║  ██║{VERDE}██║   ██║{CYAN}╚════██║{RESET}
 {ROJO} ██║ ╚═╝ ██║{VERDE}╚██████╗{CYAN}██ ██║{ROJO}██████╔╝{VERDE}╚██████╔╝{CYAN}███████║{RESET}
-{ROJO} ╚═╝     ╚═╝{VERDE} ╚═════╝{CYAN}╚═╝╚═╝{ROJO}╚═════╝ {VERDE} ╚═════╝ {CYAN}╚══════╝{RESET}
+{ROJO} ╚═╝     ╚═╝{VERDE} ╚═════╝{CYAN}╚════╝{ROJO}╚═════╝ {VERDE} ╚═════╝ {CYAN}╚══════╝{RESET}
            {CYAN}MCJdOS Alpha{RESET} — {VERDE}Gestor de paquetes{RESET}
 """)
     print("Uso: /OS<subcomando> [argumento]\n")
